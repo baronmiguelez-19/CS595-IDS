@@ -10,17 +10,15 @@
 
 - **KDD_TestSet.mat:** matlab table that contains a test database created from the data not used from the 10% database. Obtained using "~/src/createKDDTrainTestDatasets.m"
 
-- **KDDTrain_ExtraColumns.mat:** matlab table that contains the data from the "KDD_TrainSet.mat" labeled and prepared to be trained with two extra columns for binary and multiclass classifiers.
-			    	 Obtained using '~/src/datasetStatistics.m'
+- **KDDTrain_ExtraColumns.mat:** matlab table that contains the data from the "KDD_TrainSet.mat" labeled and prepared to be trained with two extra columns for binary and multiclass classifiers. Obtained using ~/src/datasetStatistics.m.
 
-- **KDDTest_ExtraColumns.mat:** matlab table that contains the data from the "KDD_TestSet.mat" labeled and prepared to be used for prediction with two extra columns for binary and 
-			        multiclass classifiers. Obtained using '~/src/datasetStatistics.m'. Used as testData in '~/src/evaluatePredictorsKDD.m'.
+- **KDDTest_ExtraColumns.mat:** matlab table that contains the data from the "KDD_TestSet.mat" labeled and prepared to be used for prediction with two extra columns for binary and multiclass classifiers. Obtained using '~/src/datasetStatistics.m'. Used as testData in '~/src/evaluatePredictorsKDD.m'.
 
 
 ## Train and Predict
 
 ## Data
-- **dataAndModels_KDD.mat :** . 
+- **dataAndModels_KDD.mat :** test data, trained data and all the classifiers obtained with MATLAB - Classification Learner prepared to be used for the KDD 99 dataset.
 
 
 - **trainClassifierXXXBin :** code exported from MATLAB - Classification Learner used to train the binary classifier specified in the file name.
