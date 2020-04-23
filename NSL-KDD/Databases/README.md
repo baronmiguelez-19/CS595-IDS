@@ -11,9 +11,8 @@
 -**NSLTrain_ExtraColumns.mat:** matlab table that contains the data from the "NSLtrain20percent.mat" labeled and prepared to be used for prediction with two extra columns 
 			        for binary and multiclass classifiers. Obtained using "~/src/datasetStatistics.m"
 
--**NSLTest_ExtraColumns.mat:** matlab table that contains the data from the "NSLtestDatabase.mat" labeled and prepared to be used for prediction with two extra columns for 
-		               binary and multiclass classifiers. Obtained using "~/src/datasetStatistics.m". Used as testData in "~/src/evaluatePredictorsKDD.m".
+-**NSLTest_ExtraColumns-UnknownFix.mat:** matlab table that contains the data from the "NSLtestDatabase.mat" labeled and prepared to be used for prediction with two extra columns for binary and multiclass classifiers with extra unknown attacks. Obtained using "~/src/datasetStatistics.m". Used as testData in "~/src/evaluatePredictorsKDD.m".
 
--**NSLTest_ExtraColumns-UnknownFix.mat:** matlab table that contains the data from the "NSLtestDatabase.mat" labeled and prepared to be used for prediction with two extra columns 
-			                  for binary and multiclass classifiers with extra unknown attacks. Obtained using "~/src/datasetStatistics.m" Used as testData in "~/src/evaluatePredictorsKDD.m".
+-**NSLTest_ExtraColumns.mat:** matlab table that contains the data from the "NSLtestDatabase.mat" labeled and prepared to be used for prediction with two extra columns for 
+		               binary and multiclass classifiers. Obtained eliminating multiAttack type 5 (unknown) instances/rows from the "NSLTest_ExtraColumns-UnknownFix.mat" dataset/table. Used as testData in "~/src/evaluatePredictorsKDD.m".
 
