@@ -12,7 +12,7 @@
 
 - **KDDTrain_ExtraColumns.mat:** matlab table that contains the data from the "KDD_TrainSet.mat" labeled and prepared to be trained with two extra columns for binary and multiclass classifiers. Obtained using ~/src/datasetStatistics.m.
 
-- **KDDTest_ExtraColumns.mat:** matlab table that contains the data from the "KDD_TestSet.mat" labeled and prepared to be used for prediction with two extra columns for binary and multiclass classifiers. Obtained using '~/src/datasetStatistics.m'. Used as testData in '~/src/evaluatePredictorsKDD.m'.
+- **KDDTest_ExtraColumns.mat:** matlab table that contains the data from the "KDD_TestSet.mat" labeled and prepared to be used for prediction with two extra columns for binary and multiclass classifiers. Obtained using "~/src/datasetStatistics.m". Used as testData in "~/src/evaluatePredictors.m".
 
 
 ## Train and Predict
