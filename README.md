@@ -1,5 +1,7 @@
 # CS595 - Artifical Intelligence - Intrusion Detection System
 
+This repository includes the different databases and scripts used to develop and analyse a set of classifiers for an intrusion detection system. To obtain the trained models/classifiers, MATLAB - Classification Learner App is used.
+
 ### Docs
 
  - **AttackTypes.csv :** types of attacks considered in the databases for classification.
