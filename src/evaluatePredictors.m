@@ -13,8 +13,8 @@
 
 %Load main variables to the workspace: 
 %Trained/Test Data, Predictor Models for Binary and Multiclass
-dataModels = 'dataAndModels_KDD.mat';
-%dataModels = 'dataAndModels_NSL.mat';
+%dataModels = 'dataAndModels_KDD.mat';
+dataModels = 'dataAndModels_NSL.mat';
 load(dataModels);
 
 %Check type of database (KDD or NSL)
@@ -48,8 +48,8 @@ CMTreeBin = confusionmat(binTarget, resTreeBin);
 
 %Compute accuracy, precision, recall and f1-score
 AccuracyTreeBin = 100*sum(diag(CMTreeBin))/sum(sum(CMTreeBin));
-PrecisionTreeBin = 100*CMTreeBin(1,1)/(CMTreeBin(1,1)+CMTreeBin(1,2));
-RecallTreeBin = 100*CMTreeBin(1,1)/(CMTreeBin(1,1)+CMTreeBin(2,1));
+PrecisionTreeBin = 100*CMTreeBin(2,2)/(CMTreeBin(2,2)+CMTreeBin(1,2));
+RecallTreeBin = 100*CMTreeBin(2,2)/(CMTreeBin(2,2)+CMTreeBin(2,1));
 F1TreeBin = 2*1/((1/PrecisionTreeBin)+(1/RecallTreeBin));
 
 %Display Results
@@ -101,8 +101,8 @@ CMKNNBin = confusionmat(binTarget, resKNNBin);
 
 %Compute accuracy, precision, recall and f1-score
 AccuracyKNNBin = 100*sum(diag(CMKNNBin))/sum(sum(CMKNNBin));
-PrecisionKNNBin = 100*CMKNNBin(1,1)/(CMKNNBin(1,1)+CMKNNBin(1,2));
-RecallKNNBin = 100*CMKNNBin(1,1)/(CMKNNBin(1,1)+CMKNNBin(2,1));
+PrecisionKNNBin = 100*CMKNNBin(2,2)/(CMKNNBin(2,2)+CMKNNBin(1,2));
+RecallKNNBin = 100*CMKNNBin(2,2)/(CMKNNBin(2,2)+CMKNNBin(2,1));
 F1KNNBin = 2*1/((1/PrecisionKNNBin)+(1/RecallKNNBin));
 
 %Display Results
@@ -155,8 +155,8 @@ CMSVMBin = confusionmat(binTarget, resSVMBin);
 
 %Compute accuracy, precision, recall and f1-score
 AccuracySVMBin = 100*sum(diag(CMSVMBin))/sum(sum(CMSVMBin));
-PrecisionSVMBin = 100*CMSVMBin(1,1)/(CMSVMBin(1,1)+CMSVMBin(1,2));
-RecallSVMBin = 100*CMSVMBin(1,1)/(CMSVMBin(1,1)+CMSVMBin(2,1));
+PrecisionSVMBin = 100*CMSVMBin(2,2)/(CMSVMBin(2,2)+CMSVMBin(1,2));
+RecallSVMBin = 100*CMSVMBin(2,2)/(CMSVMBin(2,2)+CMSVMBin(2,1));
 F1SVMBin = 2*1/((1/PrecisionSVMBin)+(1/RecallSVMBin));
 
 %Display Results
