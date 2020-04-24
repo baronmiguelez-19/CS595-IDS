@@ -13,13 +13,27 @@
 
 %Load main variables to the workspace: 
 %Trained/Test Data, Predictor Models for Binary and Multiclass
-dataModels = 'dataAndModels_KDD.mat';
+%dataModels = 'dataAndModels_KDD.mat';
+dataModels = 'dataAndModels_NSL.mat';
 load(dataModels);
 
+%Check type of database (KDD or NSL)
+%Get size of the dataset
+[dRows,dCols] = size(testData);
+instances = dRows;
+
 %Prepare target data and test data
-binTarget = table2array(testData(:,43));
-multiTarget = table2array(testData(:,44));
 inputTest = testData(:,1:41);
+
+if (dCols == 44)
+    %For KDD:
+    binTarget = table2array(testData(:,43));
+    multiTarget = table2array(testData(:,44));
+else
+    %For NSL:
+    binTarget = double(table2array(testData(:,44)));
+    multiTarget = double(table2array(testData(:,45)));
+end
 
 %%
 %------------------TREE FINE PREDICTOR------------------
@@ -27,15 +41,15 @@ inputTest = testData(:,1:41);
 disp('DECISION TREE FINE - RESULTS')
 disp('BINARY')
 %Use the trained model to predict the class of the test input data
-resTreeBin = trainedModelTreeFineBin.predictFcn(inputTest);
+resTreeBin = double(trainedModelTreeFineBin.predictFcn(inputTest));
 
 %Compute the confusion matrix of the results
 CMTreeBin = confusionmat(binTarget, resTreeBin);
 
 %Compute accuracy, precision, recall and f1-score
 AccuracyTreeBin = 100*sum(diag(CMTreeBin))/sum(sum(CMTreeBin));
-PrecisionTreeBin = 100*CMTreeBin(1,1)/(CMTreeBin(1,1)+CMTreeBin(1,2));
-RecallTreeBin = 100*CMTreeBin(1,1)/(CMTreeBin(1,1)+CMTreeBin(2,1));
+PrecisionTreeBin = 100*CMTreeBin(2,2)/(CMTreeBin(2,2)+CMTreeBin(1,2));
+RecallTreeBin = 100*CMTreeBin(2,2)/(CMTreeBin(2,2)+CMTreeBin(2,1));
 F1TreeBin = 2*1/((1/PrecisionTreeBin)+(1/RecallTreeBin));
 
 %Display Results
@@ -49,7 +63,7 @@ fprintf('\n')
 %---MULTICLASS---
 disp('MULTICLASS')
 %Use the trained model to predict the class of the test input data
-resTreeMulti = trainedModelTreeFineMulti.predictFcn(inputTest);
+resTreeMulti = double(trainedModelTreeFineMulti.predictFcn(inputTest));
 
 %Compute the confusion matrix and normalized confusion matrix of the results
 CMTreeMulti = confusionmat(multiTarget, resTreeMulti);
@@ -80,15 +94,15 @@ disp('KNN FINE - RESULTS')
 %---BINARY---
 disp('BINARY')
 %Use the trained model to predict the class of the test input data
-resKNNBin = trainedModelKNNFineBin.predictFcn(inputTest);
+resKNNBin = double(trainedModelKNNFineBin.predictFcn(inputTest));
 
 %Compute the confusion matrix of the results
 CMKNNBin = confusionmat(binTarget, resKNNBin);
 
 %Compute accuracy, precision, recall and f1-score
 AccuracyKNNBin = 100*sum(diag(CMKNNBin))/sum(sum(CMKNNBin));
-PrecisionKNNBin = 100*CMKNNBin(1,1)/(CMKNNBin(1,1)+CMKNNBin(1,2));
-RecallKNNBin = 100*CMKNNBin(1,1)/(CMKNNBin(1,1)+CMKNNBin(2,1));
+PrecisionKNNBin = 100*CMKNNBin(2,2)/(CMKNNBin(2,2)+CMKNNBin(1,2));
+RecallKNNBin = 100*CMKNNBin(2,2)/(CMKNNBin(2,2)+CMKNNBin(2,1));
 F1KNNBin = 2*1/((1/PrecisionKNNBin)+(1/RecallKNNBin));
 
 %Display Results
@@ -102,7 +116,7 @@ fprintf('\n')
 %---MULTICLASS---
 disp('MULTICLASS')
 %Use the trained model to predict the class of the test input data
-resKNNMulti = trainedModelKNNFineMulti.predictFcn(inputTest);
+resKNNMulti = double(trainedModelKNNFineMulti.predictFcn(inputTest));
 
 %Compute the confusion matrix and normalized confusion matrix of the results
 CMKNNMulti = confusionmat(multiTarget, resKNNMulti);
@@ -134,15 +148,15 @@ disp('SVM LINEAR - RESULTS')
 %---BINARY---
 disp('BINARY')
 %Use the trained model to predict the class of the test input data
-resSVMBin = trainedModelSVMBin.predictFcn(inputTest);
+resSVMBin = double(trainedModelSVMBin.predictFcn(inputTest));
 
 %Compute the confusion matrix of the results
 CMSVMBin = confusionmat(binTarget, resSVMBin);
 
 %Compute accuracy, precision, recall and f1-score
 AccuracySVMBin = 100*sum(diag(CMSVMBin))/sum(sum(CMSVMBin));
-PrecisionSVMBin = 100*CMSVMBin(1,1)/(CMSVMBin(1,1)+CMSVMBin(1,2));
-RecallSVMBin = 100*CMSVMBin(1,1)/(CMSVMBin(1,1)+CMSVMBin(2,1));
+PrecisionSVMBin = 100*CMSVMBin(2,2)/(CMSVMBin(2,2)+CMSVMBin(1,2));
+RecallSVMBin = 100*CMSVMBin(2,2)/(CMSVMBin(2,2)+CMSVMBin(2,1));
 F1SVMBin = 2*1/((1/PrecisionSVMBin)+(1/RecallSVMBin));
 
 %Display Results
@@ -156,7 +170,7 @@ fprintf('\n')
 %---MULTICLASS---
 disp('MULTICLASS')
 %Use the trained model to predict the class of the test input data
-resSVMMulti = trainedModelSVMMulti.predictFcn(inputTest);
+resSVMMulti = double(trainedModelSVMMulti.predictFcn(inputTest));
 
 %Compute the confusion matrix and normalized confusion matrix of the results
 CMSVMMulti = confusionmat(multiTarget, resSVMMulti);
